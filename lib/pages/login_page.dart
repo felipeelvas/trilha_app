@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -16,16 +15,16 @@ class _LoginPageState extends State<LoginPage> {
   var senhaController = TextEditingController(text: '');
   bool isObscureText = true;
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromARGB(0, 0, 0, 0),
         body: SingleChildScrollView(
-          child: ConstrainedBox(constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height,
-          ),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.of(context).size.height,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -35,17 +34,31 @@ class _LoginPageState extends State<LoginPage> {
                     Expanded(child: Container()),
                     Expanded(
                       flex: 8,
-                      child: Image.network('https://hermes.digitalinnovation.one/assets/diome/logo.png'),
+                      child: Image.network(
+                        'https://hermes.digitalinnovation.one/assets/diome/logo.png',
+                      ),
                     ),
                     Expanded(child: Container()),
                   ],
                 ),
                 const SizedBox(height: 20),
-                Text("Já tem cadastro?",
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.w700, color: Colors.white)),
+                Text(
+                  "Já tem cadastro?",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
                 const SizedBox(height: 10),
-                Text("Faça seu login e make the change_",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white)),
+                Text(
+                  "Faça seu login e make the change_",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
+                ),
                 const SizedBox(height: 40),
                 Container(
                   width: double.infinity,
@@ -59,19 +72,22 @@ class _LoginPageState extends State<LoginPage> {
                         print("E-mail digitado: $value");
                       }
                     },
-                      style: const TextStyle(color: Colors.white),
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.only(top: -3),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurpleAccent)),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.orange)
-                        ),
-                        hintText: "E-mail",
-                        hintStyle: TextStyle(color: Colors.white),
-                        prefixIcon: Icon(Icons.person, color: Colors.deepPurpleAccent,
-                          ),
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.only(top: -3),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.deepPurpleAccent),
                       ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.orange),
+                      ),
+                      hintText: "E-mail",
+                      hintStyle: TextStyle(color: Colors.white),
+                      prefixIcon: Icon(
+                        Icons.person,
+                        color: Colors.deepPurpleAccent,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -93,13 +109,16 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(top: -3),
                       enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.deepPurpleAccent)),
+                        borderSide: BorderSide(color: Colors.deepPurpleAccent),
+                      ),
                       focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.orange)
+                        borderSide: BorderSide(color: Colors.orange),
                       ),
                       hintText: "Senha",
                       hintStyle: const TextStyle(color: Colors.white),
-                      prefixIcon: const Icon(Icons.lock, color: Colors.deepPurpleAccent
+                      prefixIcon: const Icon(
+                        Icons.lock,
+                        color: Colors.deepPurpleAccent,
                       ),
                       suffixIcon: InkWell(
                         onTap: () {
@@ -107,12 +126,15 @@ class _LoginPageState extends State<LoginPage> {
                             isObscureText = !isObscureText;
                           });
                         },
-                        child: Icon(isObscureText ? Icons.visibility_off : Icons.visibility,
+                        child: Icon(
+                          isObscureText
+                              ? Icons.visibility_off
+                              : Icons.visibility,
                           color: Colors.white54,
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ),
                 const SizedBox(height: 30),
                 Container(
@@ -125,25 +147,35 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         if (emailController.text.trim() == 'email@email.com' &&
                             senhaController.text.trim() == '123456') {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => MainPage()),
+                          );
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("E-mail ou senha incorretos.")));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("E-mail ou senha incorretos."),
+                            ),
+                          );
                         }
                       },
                       style: ButtonStyle(
                         shape: WidgetStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
-                          )
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
-                        backgroundColor: WidgetStateProperty.all(Colors.deepPurpleAccent),
+                        backgroundColor: WidgetStateProperty.all(
+                          Colors.deepPurpleAccent,
+                        ),
                       ),
-                      child: const Text("ENTRAR",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                          )
+                      child: const Text(
+                        "ENTRAR",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
@@ -156,30 +188,34 @@ class _LoginPageState extends State<LoginPage> {
                   // color: Colors.green,
                   height: 30,
                   alignment: Alignment.center,
-                  child: Text("Esqueci minha senha",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.yellow,
-                      )),
+                  child: Text(
+                    "Esqueci minha senha",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.yellow,
+                    ),
+                  ),
                 ),
                 Container(
                   width: double.infinity,
                   margin: const EdgeInsets.symmetric(horizontal: 30),
                   height: 30,
                   alignment: Alignment.center,
-                  child: Text("Criar conta!",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.green,
-                      )),
+                  child: Text(
+                    "Criar conta!",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.green,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 60),
               ],
             ),
           ),
-        )
+        ),
       ),
     );
   }
