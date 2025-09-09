@@ -1,10 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:trilha_app/pages/dados_cadastrais.dart';
+import 'package:trilha_app/pages/list_view_horizontal.dart';
 import 'package:trilha_app/pages/login_page.dart';
 import 'package:trilha_app/pages/card_page.dart';
-import 'package:trilha_app/pages/pagina_2.dart';
-import 'package:trilha_app/pages/pagina_3.dart';
+import 'package:trilha_app/pages/image_assets.dart';
+import 'package:trilha_app/pages/list_view.dart';
 
 import '../shared/widgets/custon_drawer.dart';
 
@@ -48,12 +49,14 @@ class _MainPageState extends State<MainPage> {
       },
                 children: [
                   CardPage(),
-                  Pagina2Page(),
-                  Pagina3Page(),
+                  ImageAssetsPage(),
+                  ListViewPage(),
+                  ListViewHorizontal()
                 ],
               ),
             ),
             BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               onTap: (value) {
                controller.jumpToPage(value);
               },
@@ -61,6 +64,7 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Pag1"),
               BottomNavigationBarItem(icon: Icon(Icons.person), label: "Pag2"),
               BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Pag3"),
+              BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pag4"),
             ])
           ],
         ),
