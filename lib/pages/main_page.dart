@@ -6,6 +6,7 @@ import 'package:trilha_app/pages/login_page.dart';
 import 'package:trilha_app/pages/card_page.dart';
 import 'package:trilha_app/pages/image_assets.dart';
 import 'package:trilha_app/pages/list_view.dart';
+import 'package:trilha_app/pages/tarefa_page.dart';
 
 import '../shared/widgets/custon_drawer.dart';
 
@@ -51,7 +52,8 @@ class _MainPageState extends State<MainPage> {
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewPage(),
-                  ListViewHorizontal()
+                  ListViewHorizontal(),
+                  TarefaPage()
                 ],
               ),
             ),
@@ -65,6 +67,7 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(icon: Icon(Icons.person), label: "Pag2"),
               BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Pag3"),
               BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pag4"),
+              BottomNavigationBarItem(icon: Icon(Icons.task_outlined), label: "Tarefas"),
             ])
           ],
         ),
