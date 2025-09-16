@@ -28,11 +28,6 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           backgroundColor: Colors.red,
             title: const Text("Main Page"),
-            // titleTextStyle: TextStyle(
-            //   fontSize: 24,
-            //   fontWeight: FontWeight.bold,
-            //   color: Colors.white,
-            // ),
         ),
         drawer: CustomDrawer(),
         body: Column(

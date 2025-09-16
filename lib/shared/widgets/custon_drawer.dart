@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trilha_app/pages/configuracoes_page.dart';
 
 import '../../pages/dados_cadastrais.dart';
 import '../../pages/login_page.dart';
+import '../../pages/numeros_aleatorios_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -99,10 +101,30 @@ class CustomDrawer extends StatelessWidget {
                             Text("Configurações", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                           ],
                         )),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ConfiguracoesPage()));
+                    },
                   ),
                   const Divider(),
                   const SizedBox(height: 15),
+                  InkWell(
+                    child: Container(
+                        child: Row(
+                          children: [
+                            Icon(Icons.numbers, size: 30),
+                            const SizedBox(width: 10),
+                            Text("Gerador de Números", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                          ],
+                        )),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (bc) =>
+                      NumerosAleatoriosPage()));
+                    },
+                  ),
                   InkWell(
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
