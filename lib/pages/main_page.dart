@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
       minimum: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Theme.of(context).primaryColor,
             title: const Text("Main Page"),
         ),
         drawer: CustomDrawer(),

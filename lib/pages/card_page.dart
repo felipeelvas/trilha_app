@@ -68,7 +68,16 @@ class _CardPageState extends State<CardPage> {
                         width: double.infinity,
                         alignment: Alignment.centerRight,
                         child: TextButton(
-                            onPressed: () {},
+                          //abrir a página de detalhes ao clicar no botão
+                            style: TextButton.styleFrom(
+                              foregroundColor: Theme.of(context).colorScheme.primary,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => CardDetailPage(
+                                    cardDetail: cardDetail!,)));
+                            },
                             child: Text("Saiba mais",
                             style: TextStyle(decoration: TextDecoration.underline),) ),
                       ),

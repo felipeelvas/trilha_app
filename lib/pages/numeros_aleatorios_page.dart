@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../service/app_storage_service.dart';
+
 class NumerosAleatoriosPage extends StatefulWidget {
   const NumerosAleatoriosPage({super.key});
 
@@ -16,7 +18,8 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
   int? qtdCliques;
   final CHAVE_NUMERO_ALEATORIO = "numero_aleatorio";
   final CHAVE_QTD_CLIQUES = "qtd_cliques";
-  late SharedPreferences storage;
+
+  AppStorageService storage = AppStorageService();
 
   @override
   void initState() {
@@ -26,11 +29,9 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
   }
 
   void carregarDados() async {
-    final storage = await SharedPreferences.getInstance();
-    setState(() {
-      numeroGerado = storage.getInt(CHAVE_NUMERO_ALEATORIO);
-      qtdCliques = storage.getInt(CHAVE_QTD_CLIQUES);
-    });
+    numeroGerado = await storage.getNumeroAleatorio();
+    qtdCliques = await storage.getQtdCliques();
+    setState(() {});
   }
 
   @override
@@ -58,7 +59,7 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
             children: [
               Text(numeroGerado == null ? "Nenhum número gerado" : numeroGerado.toString(),
               style: const TextStyle(
-                fontSize: 50,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
               ),
@@ -77,14 +78,13 @@ class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           onPressed: () async {
-            storage = await SharedPreferences.getInstance();
             var random = Random();
             setState(() {
               numeroGerado = random.nextInt(1000);
               qtdCliques = (qtdCliques ?? 0) + 1;
             });
-            storage.setInt(CHAVE_NUMERO_ALEATORIO, numeroGerado!);
-            storage.setInt(CHAVE_QTD_CLIQUES, qtdCliques!);
+            await storage.setNumeroAleatorio( numeroGerado!);
+            await storage.setQtdCliques(qtdCliques!);
           },
           child: const Icon(Icons.add, size: 30),
         ),

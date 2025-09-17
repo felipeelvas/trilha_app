@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../service/app_storage_service.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
   const ConfiguracoesPage({super.key});
@@ -8,6 +11,9 @@ class ConfiguracoesPage extends StatefulWidget {
 }
 
 class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
+
+  AppStorageService storage = AppStorageService();
+
   var nomeUsuarioController = TextEditingController();
   var alturaController = TextEditingController();
 
@@ -16,6 +22,23 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
   bool receberPushNotifications = false;
   bool temaEscuro = false;
 
+
+  @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      carregarConfiguracoes();
+    }
+
+    void carregarConfiguracoes() async {
+      nomeUsuario = await storage.getConfiguracoesNomeUsuario();
+      altura = await storage.getConfiguracoesAltura();
+      receberPushNotifications = await storage.getConfiguracoesReceberPushNotifications();
+      temaEscuro = await storage.getConfiguracoesTemaEscuro();
+      nomeUsuarioController.text = nomeUsuario ?? "";
+      alturaController.text = (altura != null) ? altura.toString() : "";
+      setState(() {});
+    }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +102,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
           SwitchListTile(
             title: Text('Tema Escuro'),
             value: temaEscuro,
-            onChanged: (value) {
+            onChanged: (bool value) {
               setState(() {
                 temaEscuro = value;
               });
@@ -92,14 +115,37 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
               style: ElevatedButton.styleFrom(
                 minimumSize: Size(double.infinity, 50),
                 backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor:  Theme.of(context).colorScheme.onSecondary,
+                foregroundColor:  Theme.of(context).colorScheme.surface,
                 shape: const StadiumBorder(),
                 padding: const EdgeInsets.symmetric(horizontal: 24),
               ),
               onPressed: () async {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Configurações salvas!', style: TextStyle(fontSize: 16, backgroundColor: Colors.green[700], color: Theme.of(context).colorScheme.onPrimary)),),
-                );
+                FocusManager.instance.primaryFocus?.unfocus();
+                await storage.setConfiguracoesNomeUsuario(nomeUsuarioController.text);
+                try {
+                  await storage.setConfiguracoesAltura(
+                  double.parse(alturaController.text));
+                } catch (e) {
+                  showDialog(context: context, builder: (_) {
+                    return AlertDialog(
+                      title: Text("Erro" ),
+                      content: Text("Valor inválido para altura. Por favor, insira um número válido." ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("OK"),
+                        ),
+                      ],
+                    );
+                  });
+                  return;
+                  // await storage.setDouble(CHAVE_ALTURA, 0.0);
+                }
+                await storage.setConfiguracoesReceberPushNotifications(receberPushNotifications);
+                await storage.setConfiguracoesTemaEscuro(temaEscuro);
+                Navigator.pop(context);
               },
               child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
