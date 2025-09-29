@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../model/tarefa.dart';
-import '../repositories/tarefa_repository.dart';
+import '../../model/tarefa.dart';
+import '../../repositories/tarefa_repository.dart';
 
 class TarefaPage extends StatefulWidget {
   const TarefaPage({super.key});

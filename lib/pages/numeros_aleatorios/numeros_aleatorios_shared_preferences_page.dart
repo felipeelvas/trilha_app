@@ -1,18 +1,17 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../service/app_storage_service.dart';
+import '../../service/app_storage_service.dart';
 
-class NumerosAleatoriosPage extends StatefulWidget {
-  const NumerosAleatoriosPage({super.key});
+class NumerosAleatoriosSharedPreferencesPage extends StatefulWidget {
+  const NumerosAleatoriosSharedPreferencesPage({super.key});
 
   @override
-  State<NumerosAleatoriosPage> createState() => _NumerosAleatoriosPageState();
+  State<NumerosAleatoriosSharedPreferencesPage> createState() => _NumerosAleatoriosSharedPreferencesPageState();
 }
 
-class _NumerosAleatoriosPageState extends State<NumerosAleatoriosPage> {
+class _NumerosAleatoriosSharedPreferencesPageState extends State<NumerosAleatoriosSharedPreferencesPage> {
 
   int? numeroGerado;
   int? qtdCliques;

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:trilha_app/pages/configuracoes_page.dart';
+import 'package:trilha_app/pages/configuracoes/configuracoes_shared_preferences_page.dart';
+import 'package:trilha_app/pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
 
-import '../../pages/dados_cadastrais.dart';
+import '../../pages/configuracoes/configuracoes_hive_page.dart';
+import '../../pages/dados_cadastrais/dados_cadastrais_hive.dart';
+import '../../pages/dados_cadastrais/dados_cadastrais_shared.dart';
 import '../../pages/login_page.dart';
-import '../../pages/numeros_aleatorios_page.dart';
+import '../../pages/numeros_aleatorios/numeros_aleatorios_shared_preferences_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -75,71 +78,111 @@ class CustomDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   InkWell(
-                    child: Container(
-                        child: Row(
-                          children: [
-                            Icon(Icons.person, size: 30),
-                            const SizedBox(width: 10),
-                            Text("Dados Cadastrais", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                          ],
-                        )),
+                    child: Row(
+                      children: [
+                        Icon(Icons.person, size: 22),
+                        const SizedBox(width: 10),
+                        // Text("Dados Cadastrais Shared", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                        Text("Dados Cadastrais Hive", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      ],
+                    ),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => DadosCadastraisPage()));
+                          // MaterialPageRoute(builder: (context) => DadosCadastraisSharedPage()));
+                          MaterialPageRoute(builder: (context) => DadosCadastraisHivePage()));
                     },
                   ),
+                  // const Divider(),
+                  // const SizedBox(height: 15),
+                  // InkWell(
+                  //   child: SizedBox(
+                  //     child: Row(
+                  //       children: [
+                  //         Icon(Icons.settings, size: 22),
+                  //         const SizedBox(width: 10),
+                  //         Expanded(
+                  //           flex: 1,
+                  //           child: Text("Configurações Shared Preferences",
+                  //               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  //   onTap: () {
+                  //     Navigator.pop(context);
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(builder: (context) => ConfiguracoesSharedPreferencesPage()));
+                  //   },
+                  // ),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  InkWell(
+                    child: Row(
+                      children: [
+                        Icon(Icons.settings, size: 22),
+                        const SizedBox(width: 10),
+                        Text("Configurações Hive", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      ],
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ConfiguracoesHivePage()));
+                    },
+                  ),
+                  // const Divider(),
+                  // const SizedBox(height: 15),
+                  // InkWell(
+                  //   child: Row(
+                  //     children: [
+                  //       Icon(Icons.numbers, size: 22),
+                  //       const SizedBox(width: 10),
+                  //       Text("Gerador de Números", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                  //     ],
+                  //   ),
+                  //   onTap: () {
+                  //     Navigator.pop(context);
+                  //     Navigator.push(context, MaterialPageRoute(builder: (bc) =>
+                  //     NumerosAleatoriosSharedPreferencesPage()));
+                  //     NumerosAleatoriosHivePage();
+                  //   },
+                  // ),
                   const Divider(),
                   const SizedBox(height: 15),
                   InkWell(
                     child: Container(
                         child: Row(
                           children: [
-                            Icon(Icons.settings, size: 30),
+                            Icon(Icons.numbers, size: 22),
                             const SizedBox(width: 10),
-                            Text("Configurações", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                          ],
-                        )),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ConfiguracoesPage()));
-                    },
-                  ),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  InkWell(
-                    child: Container(
-                        child: Row(
-                          children: [
-                            Icon(Icons.numbers, size: 30),
-                            const SizedBox(width: 10),
-                            Text("Gerador de Números", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                            Text("HIVE", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
                           ],
                         )),
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.push(context, MaterialPageRoute(builder: (bc) =>
-                      NumerosAleatoriosPage()));
+                      NumerosAleatoriosHivePage()));
                     },
                   ),
+                  const Divider(),
+                  const SizedBox(height: 15),
                   InkWell(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.policy, size: 30),
-                          const SizedBox(width: 10),
-                          const Expanded(
-                            child: Text(
-                              "Termos e Privacidade",
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.policy, size: 22),
+                        const SizedBox(width: 10),
+                         Expanded(
+                           flex: 1,
+                          child: Text(
+                            "Termos de uso e Privacidade",
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                     onTap: () {
                       showModalBottomSheet(

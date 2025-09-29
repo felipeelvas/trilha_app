@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../service/app_storage_service.dart';
+import '../../service/app_storage_service.dart';
 
-class ConfiguracoesPage extends StatefulWidget {
-  const ConfiguracoesPage({super.key});
+class ConfiguracoesSharedPreferencesPage extends StatefulWidget {
+  const ConfiguracoesSharedPreferencesPage({super.key});
 
   @override
-  State<ConfiguracoesPage> createState() => _ConfiguracoesPageState();
+  State<ConfiguracoesSharedPreferencesPage> createState() => _ConfiguracoesSharedPreferencesPageState();
 }
 
-class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
+class _ConfiguracoesSharedPreferencesPageState extends State<ConfiguracoesSharedPreferencesPage> {
 
   AppStorageService storage = AppStorageService();
 
