@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
-import 'package:trilha_app/pages/dados_cadastrais/dados_cadastrais_shared.dart';
-import 'package:trilha_app/pages/list_view_horizontal.dart';
-import 'package:trilha_app/pages/login_page.dart';
 import 'package:trilha_app/pages/card_page.dart';
 import 'package:trilha_app/pages/image_assets.dart';
 import 'package:trilha_app/pages/list_view.dart';
-import 'package:trilha_app/pages/tarefa_page/tarefa_page.dart';
+import 'package:trilha_app/pages/list_view_horizontal.dart';
+import 'package:trilha_app/pages/tarefa_page/tarefa_sqlite_page.dart';
 
 import '../shared/widgets/custon_drawer.dart';
 
@@ -43,12 +40,12 @@ class _MainPageState extends State<MainPage> {
                   print("Página atual: $value");
                   });
       },
-                children: [
+                children: const [
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewPage(),
                   ListViewHorizontal(),
-                  TarefaPage()
+                  TarefaSQLitePage()
                 ],
               ),
             ),
