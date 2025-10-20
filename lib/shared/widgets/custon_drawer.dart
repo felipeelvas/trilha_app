@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilha_app/pages/configuracoes/configuracoes_shared_preferences_page.dart';
 import 'package:trilha_app/pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
+import 'package:trilha_app/pages/posts_page.dart';
 
 import '../../pages/configuracoes/configuracoes_hive_page.dart';
 import '../../pages/dados_cadastrais/dados_cadastrais_hive.dart';
@@ -267,9 +268,24 @@ class CustomDrawer extends StatelessWidget {
                       );
                     },
                   ),
-
                   const Divider(),
                   const SizedBox(height: 15),
+                  InkWell(
+                    child: Container(
+                        child: Row(
+                          children: [
+                            Icon(Icons.post_add, size: 22),
+                            const SizedBox(width: 10),
+                            Text("Posts", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                          ],
+                        )),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(context, MaterialPageRoute(builder: (bc) =>
+                          PostsPage()));
+                    },
+                  ),
+                  const Divider(),
                   InkWell(
                     child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 5),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilha_app/pages/card_page.dart';
+import 'package:trilha_app/pages/consulta_cep.dart';
 import 'package:trilha_app/pages/image_assets.dart';
 import 'package:trilha_app/pages/list_view.dart';
 import 'package:trilha_app/pages/list_view_horizontal.dart';
@@ -41,6 +42,7 @@ class _MainPageState extends State<MainPage> {
                   });
       },
                 children: const [
+                  ConsultaCEP(),
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewPage(),
@@ -55,6 +57,7 @@ class _MainPageState extends State<MainPage> {
                controller.jumpToPage(value);
               },
                 currentIndex: _paginaAtual , items: [
+              BottomNavigationBarItem(icon: Icon(Icons.map), label: "CEP"),
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Pag1"),
               BottomNavigationBarItem(icon: Icon(Icons.person), label: "Pag2"),
               BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Pag3"),
