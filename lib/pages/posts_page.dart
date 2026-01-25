@@ -20,6 +20,7 @@ class _PostsPageState extends State<PostsPage> {
     super.initState();
     carregarPosts();
   }
+
   carregarPosts() async {
     posts = await postsRepository.getPosts();
   }
@@ -27,38 +28,51 @@ class _PostsPageState extends State<PostsPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).primaryColor,
-            title: Text('Posts Page'),
-          ),
-          body: ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (_, index) {
-              var post = posts[index];
-              return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  child: Card(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              post.title,
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              post.body,
-                              style: TextStyle(fontSize: 14),
-                            ),
-                          ],
-                        )),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          centerTitle: true,
+          leading: BackButton(color: Colors.white),
+          title: Text('Posts'),
+        ),
+        body: ListView.builder(
+          itemCount: posts.length,
+          itemBuilder: (_, index) {
+            var post = posts[index];
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 16,
+              ).copyWith(bottom: 8.0),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 8.0,
+                      horizontal: 8.0,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          post.title,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(post.body, style: TextStyle(fontSize: 16)),
+                      ],
+                    ),
                   ),
-              );
-            },
-          ),
-    ));
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }

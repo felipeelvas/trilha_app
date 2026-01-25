@@ -12,203 +12,287 @@ import '../../pages/numeros_aleatorios/numeros_aleatorios_shared_preferences_pag
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Drawer(
-        shadowColor: Colors.white,
-        backgroundColor: Colors.grey[300],
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Menu", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 20),
-            InkWell(
-              onTap: () {
-                showModalBottomSheet(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(10),
+      shadowColor: Colors.red,
+      backgroundColor: Colors.blue.shade100,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Menu",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 20),
+          InkWell(
+            onTap: () {
+              showModalBottomSheet(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+                ),
+                context: context,
+                builder: (BuildContext bc) {
+                  return Wrap(
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.camera,
+                          color: Colors.lightBlueAccent,
+                        ),
+                        title: Text(
+                          "Camera",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                       ),
-                    ),
-                    context: context,
-                    builder: (BuildContext bc) {
-                      return Wrap(
-                        children: [
-                          ListTile(
-                            leading: Icon(Icons.camera),
-                            title: Text("Camera"),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.album),
-                            title: Text("Galeria"),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.remove_circle),
-                            title: Text("Remover Foto"),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: Icon(Icons.cancel),
-                            title: Text("Cancelar"),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-
-                        ],
-                      );
-                    });
-              },
-              child: UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: Colors.black),
-                currentAccountPicture: CircleAvatar(child: Image.network("https://ynaralira.github.io/Instagram-Dio/logo-dio.png")),
-                accountName: Text("Nome do Usuário"),
-                accountEmail: Text("email@email.com"),
+                      ListTile(
+                        leading: Icon(Icons.album, color: Colors.purple),
+                        title: Text(
+                          "Galeria",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.remove_circle,
+                          color: Colors.orange,
+                        ),
+                        title: Text(
+                          "Remover Foto",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.cancel, color: Colors.red),
+                        title: Text(
+                          "Cancelar",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            child: UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.black),
+              currentAccountPicture: CircleAvatar(
+                child: Image.network(
+                  "https://ynaralira.github.io/Instagram-Dio/logo-dio.png",
+                ),
               ),
+              accountName: Text("Nome do Usuário"),
+              accountEmail: Text("email@email.com"),
             ),
-            Divider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: Column(
-                children: [
-                  InkWell(
+          ),
+          Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            child: Column(
+              children: [
+                InkWell(
+                  child: Row(
+                    children: [
+                      Icon(Icons.person, size: 22),
+                      const SizedBox(width: 10),
+                      // Text("Dados Cadastrais Shared", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                      Text(
+                        "Dados Cadastrais Hive",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      // MaterialPageRoute(builder: (context) => DadosCadastraisSharedPage()));
+                      MaterialPageRoute(
+                        builder: (context) => DadosCadastraisHivePage(),
+                      ),
+                    );
+                  },
+                ),
+                // const Divider(),
+                // const SizedBox(height: 15),
+                // InkWell(
+                //   child: SizedBox(
+                //     child: Row(
+                //       children: [
+                //         Icon(Icons.settings, size: 22),
+                //         const SizedBox(width: 10),
+                //         Expanded(
+                //           flex: 1,
+                //           child: Text("Configurações Shared Preferences",
+                //               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(builder: (context) => ConfiguracoesSharedPreferencesPage()));
+                //   },
+                // ),
+                const Divider(),
+                const SizedBox(height: 15),
+                InkWell(
+                  child: Row(
+                    children: [
+                      Icon(Icons.settings, size: 22),
+                      const SizedBox(width: 10),
+                      Text(
+                        "Configurações Hive",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ConfiguracoesHivePage(),
+                      ),
+                    );
+                  },
+                ),
+                // const Divider(),
+                // const SizedBox(height: 15),
+                // InkWell(
+                //   child: Row(
+                //     children: [
+                //       Icon(Icons.numbers, size: 22),
+                //       const SizedBox(width: 10),
+                //       Text("Gerador de Números", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                //     ],
+                //   ),
+                //   onTap: () {
+                //     Navigator.pop(context);
+                //     Navigator.push(context, MaterialPageRoute(builder: (bc) =>
+                //     NumerosAleatoriosSharedPreferencesPage()));
+                //     NumerosAleatoriosHivePage();
+                //   },
+                // ),
+                const Divider(),
+                const SizedBox(height: 15),
+                InkWell(
+                  child: Container(
                     child: Row(
                       children: [
-                        Icon(Icons.person, size: 22),
+                        Icon(Icons.numbers, size: 22),
                         const SizedBox(width: 10),
-                        // Text("Dados Cadastrais Shared", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                        Text("Dados Cadastrais Hive", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                          context,
-                          // MaterialPageRoute(builder: (context) => DadosCadastraisSharedPage()));
-                          MaterialPageRoute(builder: (context) => DadosCadastraisHivePage()));
-                    },
-                  ),
-                  // const Divider(),
-                  // const SizedBox(height: 15),
-                  // InkWell(
-                  //   child: SizedBox(
-                  //     child: Row(
-                  //       children: [
-                  //         Icon(Icons.settings, size: 22),
-                  //         const SizedBox(width: 10),
-                  //         Expanded(
-                  //           flex: 1,
-                  //           child: Text("Configurações Shared Preferences",
-                  //               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  //   onTap: () {
-                  //     Navigator.pop(context);
-                  //     Navigator.push(
-                  //         context,
-                  //         MaterialPageRoute(builder: (context) => ConfiguracoesSharedPreferencesPage()));
-                  //   },
-                  // ),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  InkWell(
-                    child: Row(
-                      children: [
-                        Icon(Icons.settings, size: 22),
-                        const SizedBox(width: 10),
-                        Text("Configurações Hive", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                      ],
-                    ),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ConfiguracoesHivePage()));
-                    },
-                  ),
-                  // const Divider(),
-                  // const SizedBox(height: 15),
-                  // InkWell(
-                  //   child: Row(
-                  //     children: [
-                  //       Icon(Icons.numbers, size: 22),
-                  //       const SizedBox(width: 10),
-                  //       Text("Gerador de Números", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                  //     ],
-                  //   ),
-                  //   onTap: () {
-                  //     Navigator.pop(context);
-                  //     Navigator.push(context, MaterialPageRoute(builder: (bc) =>
-                  //     NumerosAleatoriosSharedPreferencesPage()));
-                  //     NumerosAleatoriosHivePage();
-                  //   },
-                  // ),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  InkWell(
-                    child: Container(
-                        child: Row(
-                          children: [
-                            Icon(Icons.numbers, size: 22),
-                            const SizedBox(width: 10),
-                            Text("HIVE", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                          ],
-                        )),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(context, MaterialPageRoute(builder: (bc) =>
-                      NumerosAleatoriosHivePage()));
-                    },
-                  ),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  InkWell(
-                    child: Row(
-                      children: [
-                        const Icon(Icons.policy, size: 22),
-                        const SizedBox(width: 10),
-                         Expanded(
-                           flex: 1,
-                          child: Text(
-                            "Termos de uso e Privacidade",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                        Text(
+                          "HIVE",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true, // permite scroll total
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (bc) => NumerosAleatoriosHivePage(),
+                      ),
+                    );
+                  },
+                ),
+                const Divider(),
+                const SizedBox(height: 15),
+                InkWell(
+                  child: Row(
+                    children: [
+                      Icon(Icons.post_add_rounded, size: 22),
+                      const SizedBox(width: 10),
+                      Text(
+                        "Posts",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                        builder: (BuildContext bc) {
-                          return DraggableScrollableSheet(
-                            expand: false,
-                            builder: (context, scrollController) {
-                              return Padding(
-                                padding: const EdgeInsets.all(16),
-                                child: ListView(
-                                  controller: scrollController,
-                                  children: const [
-                                    Text(
-                                      "Termos de Uso e Política de Privacidade",
-                                      textAlign: TextAlign.justify,
-                                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (bc) => PostsPage()),
+                    );
+                  },
+                ),
+                const Divider(),
+                const SizedBox(height: 15),
+                InkWell(
+                  child: Row(
+                    children: [
+                      const Icon(Icons.policy, size: 22),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          "Termos de uso e Privacidade",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true, // permite scroll total
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(16),
+                        ),
+                      ),
+                      builder: (BuildContext bc) {
+                        return DraggableScrollableSheet(
+                          expand: false,
+                          builder: (context, scrollController) {
+                            return Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: ListView(
+                                controller: scrollController,
+                                children: const [
+                                  Text(
+                                    "Termos de Uso e Política de Privacidade",
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                    SizedBox(height: 12),
-                                    Text(
-                                      '''
+                                  ),
+                                  SizedBox(height: 12),
+                                  Text(
+                                    '''
                                   # Termos de Uso e Política de Privacidade
                                   
                                   ## 1. Introdução
@@ -257,86 +341,91 @@ class CustomDrawer extends StatelessWidget {
                                   Controlador: TODO: Sua Empresa/Pessoa Jurídica
                                   E-mail do DPO/Encarregado: TODO: dpo@dominio.com
                                                       ''',
-                                      style: TextStyle(fontSize: 14, height: 1.5),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      );
-                    },
-                  ),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  InkWell(
-                    child: Container(
-                        child: Row(
-                          children: [
-                            Icon(Icons.post_add, size: 22),
-                            const SizedBox(width: 10),
-                            Text("Posts", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
-                          ],
-                        )),
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(context, MaterialPageRoute(builder: (bc) =>
-                          PostsPage()));
-                    },
-                  ),
-                  const Divider(),
-                  InkWell(
-                    child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: [
-                            Icon(Icons.exit_to_app, size: 30),
-                            const SizedBox(width: 10),
-                            Text("Sair", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                          ],
-                        )),
-                    onTap: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext bc) {
-                            return AlertDialog(
-                              alignment: Alignment.centerLeft,
-                              elevation: 8,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
-                              backgroundColor: Colors.white,
-                              title: Text("Meu App", style: TextStyle(fontWeight: FontWeight.bold)),
-                              content: Wrap(
-                                children: [
-                                  Text("Deseja realmente sair do aplicativo?", style: TextStyle(fontSize: 14)),
+                                    style: TextStyle(fontSize: 14, height: 1.5),
+                                  ),
                                 ],
                               ),
-                              actions: [
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Text("Cancelar")),
-                                TextButton(
-                                    onPressed: () {
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => LoginPage()),
-                                      );
-                                    },
-                                    child: Text("Sair"))
-                              ],
                             );
-                          });
-                    },
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+                const Divider(),
+                InkWell(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      children: [
+                        Icon(Icons.exit_to_app, size: 30),
+                        const SizedBox(width: 10),
+                        Text(
+                          "Sair",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  const Divider(),
-                ],
-              ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext bc) {
+                        return AlertDialog(
+                          alignment: Alignment.centerLeft,
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          backgroundColor: Colors.white,
+                          title: Text(
+                            "Meu App",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          content: Wrap(
+                            children: [
+                              Text(
+                                "Deseja realmente sair do aplicativo?",
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                "Cancelar",
+                                style: TextStyle(color: Colors.red),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                );
+                              },
+                              child: Text("Sair"),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                ),
+                const Divider(),
+              ],
             ),
-          ],
-        )
+          ),
+        ],
+      ),
     );
   }
 }

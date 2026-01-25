@@ -25,7 +25,8 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).primaryColor,
-            title: const Text("Main Page"),
+          leading: DrawerButton(color: Colors.white),
+          title: const Text("Main Page"),
         ),
         drawer: CustomDrawer(),
         body: Column(
@@ -37,33 +38,44 @@ class _MainPageState extends State<MainPage> {
                 scrollDirection: Axis.horizontal,
                 onPageChanged: (value) {
                   setState(() {
-                  _paginaAtual = value;
-                  print("Página atual: $value");
+                    _paginaAtual = value;
+                    print("Página atual: $value");
                   });
-      },
+                },
                 children: const [
                   ConsultaCEP(),
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewPage(),
                   ListViewHorizontal(),
-                  TarefaSQLitePage()
+                  TarefaSQLitePage(),
                 ],
               ),
             ),
             BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
               onTap: (value) {
-               controller.jumpToPage(value);
+                controller.jumpToPage(value);
               },
-                currentIndex: _paginaAtual , items: [
-              BottomNavigationBarItem(icon: Icon(Icons.map), label: "CEP"),
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Pag1"),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Pag2"),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Pag3"),
-              BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pag4"),
-              BottomNavigationBarItem(icon: Icon(Icons.task_outlined), label: "Tarefas"),
-            ])
+              currentIndex: _paginaAtual,
+              items: [
+                BottomNavigationBarItem(icon: Icon(Icons.map), label: "CEP"),
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Pag1"),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: "Pag2",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: "Pag3",
+                ),
+                BottomNavigationBarItem(icon: Icon(Icons.list), label: "Pag4"),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.task_outlined),
+                  label: "Tarefas",
+                ),
+              ],
+            ),
           ],
         ),
       ),
